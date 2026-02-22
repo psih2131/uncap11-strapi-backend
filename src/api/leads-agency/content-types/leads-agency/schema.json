@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads_agencies",
+  "info": {
+    "singularName": "leads-agency",
+    "pluralName": "leads-agencies",
+    "displayName": "leads-agency"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "agency_name": {
+      "type": "string"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    },
+    "text_message": {
+      "type": "text"
+    }
+  }
+}

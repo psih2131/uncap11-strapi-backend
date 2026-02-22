@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads_pay_statuses",
+  "info": {
+    "singularName": "leads-pay-status",
+    "pluralName": "leads-pay-statuses",
+    "displayName": "leads-pay-status"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "payment_id": {
+      "type": "uid"
+    },
+    "payment_status": {
+      "type": "string"
+    },
+    "pay_address": {
+      "type": "string"
+    },
+    "price_amount": {
+      "type": "string"
+    },
+    "price_currency": {
+      "type": "string"
+    },
+    "pay_currency": {
+      "type": "string"
+    },
+    "pay_amount": {
+      "type": "string"
+    },
+    "order_description": {
+      "type": "text"
+    },
+    "user_email": {
+      "type": "email"
+    },
+    "full_info": {
+      "type": "json"
+    }
+  }
+}
