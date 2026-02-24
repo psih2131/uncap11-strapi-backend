@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads_profile_access_allocations",
+  "info": {
+    "singularName": "leads-profile-access-allocation",
+    "pluralName": "leads-profile-access-allocations",
+    "displayName": "leads-profile-access-allocation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gender": {
+      "type": "string"
+    },
+    "Quantity": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "email"
+    },
+    "account_type": {
+      "type": "string"
+    },
+    "period_of_use": {
+      "type": "string"
+    },
+    "textarea": {
+      "type": "text"
+    }
+  }
+}

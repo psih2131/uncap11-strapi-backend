@@ -702,6 +702,40 @@ export interface ApiLeadsPayStatusLeadsPayStatus
   };
 }
 
+export interface ApiLeadsProfileAccessAllocationLeadsProfileAccessAllocation
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'leads_profile_access_allocations';
+  info: {
+    displayName: 'leads-profile-access-allocation';
+    pluralName: 'leads-profile-access-allocations';
+    singularName: 'leads-profile-access-allocation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    account_type: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email;
+    gender: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::leads-profile-access-allocation.leads-profile-access-allocation'
+    > &
+      Schema.Attribute.Private;
+    period_of_use: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Quantity: Schema.Attribute.String;
+    textarea: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLeadsSingUpLeadsSingUp extends Struct.CollectionTypeSchema {
   collectionName: 'leads_sing_ups';
   info: {
@@ -1251,6 +1285,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::leads-agency.leads-agency': ApiLeadsAgencyLeadsAgency;
       'api::leads-pay-status.leads-pay-status': ApiLeadsPayStatusLeadsPayStatus;
+      'api::leads-profile-access-allocation.leads-profile-access-allocation': ApiLeadsProfileAccessAllocationLeadsProfileAccessAllocation;
       'api::leads-sing-up.leads-sing-up': ApiLeadsSingUpLeadsSingUp;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
