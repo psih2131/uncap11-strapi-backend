@@ -766,6 +766,35 @@ export interface ApiLeadsSingUpLeadsSingUp extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiNotificationsEmailListNotificationsEmailList
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'notifications_email_lists';
+  info: {
+    displayName: 'notifications_email-list';
+    pluralName: 'notifications-email-lists';
+    singularName: 'notifications-email-list';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    current_email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notifications-email-list.notifications-email-list'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1287,6 +1316,7 @@ declare module '@strapi/strapi' {
       'api::leads-pay-status.leads-pay-status': ApiLeadsPayStatusLeadsPayStatus;
       'api::leads-profile-access-allocation.leads-profile-access-allocation': ApiLeadsProfileAccessAllocationLeadsProfileAccessAllocation;
       'api::leads-sing-up.leads-sing-up': ApiLeadsSingUpLeadsSingUp;
+      'api::notifications-email-list.notifications-email-list': ApiNotificationsEmailListNotificationsEmailList;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

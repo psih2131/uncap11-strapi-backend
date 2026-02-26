@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications_email_lists",
+  "info": {
+    "singularName": "notifications-email-list",
+    "pluralName": "notifications-email-lists",
+    "displayName": "notifications_email-list"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "current_email": {
+      "type": "email"
+    }
+  }
+}
