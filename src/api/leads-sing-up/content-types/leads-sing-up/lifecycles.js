@@ -19,11 +19,12 @@ async function sendEmailNonification(result) {
     }
     console.log('send email done');
 
-    // let email = 'gearsdeveloper@gmail.com';
-    let subject = 'New lead sing up';
-    let text = `New lead sing up  ${JSON.stringify(result)}`;
-    let html = `<p>New lead sing up</p>
-    ${JSON.stringify(result)}`;
+    const fullName = result?.full_name ?? '-';
+    const userEmail = result?.user_email ?? '-';
+
+    const subject = 'New lead sign up';
+    const text = `New lead sign up\n\nName: ${fullName}\nEmail: ${userEmail}`;
+    const html = `<p><strong>New lead sign up</strong></p><p><strong>Name:</strong> ${fullName}</p><p><strong>Email:</strong> ${userEmail}</p>`;
 
     //send email to all emails in notifications-email-list
     let promises = [];
