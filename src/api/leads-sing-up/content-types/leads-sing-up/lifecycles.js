@@ -53,7 +53,6 @@ module.exports = {
      */
     async afterCreate(event) {
       const { result } = event;
-      console.log('[leads-pay-status] afterCreate', { publishedAt: result?.publishedAt, user_email: result?.user_email });
       if (!result?.publishedAt) return;
       await sendEmailNonification(result);
     },
@@ -63,11 +62,6 @@ module.exports = {
      */
     async afterUpdate(event) {
       const { result, params } = event;
-      console.log('[leads-pay-status] afterUpdate', {
-        publishedAt: result?.publishedAt,
-        user_email: result?.user_email,
-        'params.data?.publishedAt': params?.data?.publishedAt,
-      });
       if (!params?.data?.publishedAt) return;
       await sendEmailNonification(result);
     },

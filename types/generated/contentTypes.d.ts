@@ -762,7 +762,7 @@ export interface ApiLeadsSingUpLeadsSingUp extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     user_email: Schema.Attribute.Email;
-    user_pass: Schema.Attribute.Password;
+    user_pass: Schema.Attribute.String;
   };
 }
 
