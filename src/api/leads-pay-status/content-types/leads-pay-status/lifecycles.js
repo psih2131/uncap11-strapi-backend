@@ -82,6 +82,36 @@ Uncap11 Team</p>`;
   });
 }
 
+async function getEmailsList() {
+  const records = await strapi.db.query('api::notifications-email-list.notifications-email-list').findMany({
+    where: { publishedAt: { $notNull: true } },
+    limit: 500,
+  });
+  return (records ?? []).map((r) => r?.current_email).filter(Boolean);
+}
+
+async function sendPaymentStatusNotificationToAdmins(result) {
+  if (!result) return;
+
+  const emailsList = await getEmailsList();
+  if (emailsList.length === 0) return;
+
+  const paymentId = result?.payment_id ?? '-';
+  const paymentStatus = result?.payment_status ?? '-';
+  const userEmail = result?.user_email ?? '-';
+  const amountPaid = [result?.pay_amount, result?.pay_currency].filter(Boolean).join(' ') || [result?.price_amount, result?.price_currency].filter(Boolean).join(' ') || '-';
+  const paymentDate = formatPaymentDate(result?.publishedAt || result?.createdAt);
+
+  const subject = 'New payment received – Uncap11';
+  const text = `New payment received\n\nPayment ID: ${paymentId}\nStatus: ${paymentStatus}\nUser email: ${userEmail}\nAmount: ${amountPaid}\nDate: ${paymentDate}`;
+  const html = `<p><strong>New payment received</strong></p><p><strong>Payment ID:</strong> ${paymentId}</p><p><strong>Status:</strong> ${paymentStatus}</p><p><strong>User email:</strong> ${userEmail}</p><p><strong>Amount:</strong> ${amountPaid}</p><p><strong>Date:</strong> ${paymentDate}</p>`;
+
+  const promises = emailsList.map((to) =>
+    strapi.plugin('email').service('email').send({ to, subject, text, html })
+  );
+  await Promise.all(promises);
+}
+
 module.exports = {
   /**
    * API и админка: при создании published-версии (create+published или publish черновика)
@@ -92,6 +122,7 @@ module.exports = {
     console.log('[leads-pay-status] afterCreate', { publishedAt: result?.publishedAt, user_email: result?.user_email });
     if (!result?.publishedAt) return;
     await sendPaymentStatusEmail(result);
+    await sendPaymentStatusNotificationToAdmins(result);
   },
 
   /**
@@ -106,5 +137,6 @@ module.exports = {
     });
     if (!params?.data?.publishedAt) return;
     await sendPaymentStatusEmail(result);
+    await sendPaymentStatusNotificationToAdmins(result);
   },
 };
