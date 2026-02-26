@@ -38,9 +38,6 @@ Order ID: ${orderId}
 Amount: ${amountPaid}
 Date: ${paymentDate}
 
-Full data order:
-${fullDescription}
-
 Our team will contact you within 12–24 hours with onboarding instructions and the next steps to activate your access.
 
 If you have any immediate questions, feel free to reply directly to this email.
@@ -61,9 +58,6 @@ Uncap11 Team`;
 Order ID: ${orderId}<br>
 Amount: ${amountPaid}<br>
 Date: ${paymentDate}</p>
-
-<p><strong>Full data order:</strong><br>
-<pre style="background:#f5f5f5;padding:12px;overflow:auto;">${fullDescription.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre></p>
 
 <p>Our team will contact you within 12–24 hours with onboarding instructions and the next steps to activate your access.</p>
 
