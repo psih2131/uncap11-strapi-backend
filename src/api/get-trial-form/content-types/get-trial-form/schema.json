@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "get_trial_forms",
+  "info": {
+    "singularName": "get-trial-form",
+    "pluralName": "get-trial-forms",
+    "displayName": "get_trial_form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "work_email": {
+      "type": "email"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}

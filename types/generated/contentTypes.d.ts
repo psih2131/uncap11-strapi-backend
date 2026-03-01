@@ -600,6 +600,38 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGetTrialFormGetTrialForm
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'get_trial_forms';
+  info: {
+    displayName: 'get_trial_form';
+    pluralName: 'get-trial-forms';
+    singularName: 'get-trial-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    full_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::get-trial-form.get-trial-form'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    role: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    website: Schema.Attribute.String;
+    work_email: Schema.Attribute.Email;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1311,6 +1343,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::get-trial-form.get-trial-form': ApiGetTrialFormGetTrialForm;
       'api::global.global': ApiGlobalGlobal;
       'api::leads-agency.leads-agency': ApiLeadsAgencyLeadsAgency;
       'api::leads-pay-status.leads-pay-status': ApiLeadsPayStatusLeadsPayStatus;
