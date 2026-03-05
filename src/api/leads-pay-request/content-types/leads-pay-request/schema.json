@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leads_pay_requests",
+  "info": {
+    "singularName": "leads-pay-request",
+    "pluralName": "leads-pay-requests",
+    "displayName": "leads-pay-request"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "payment_id": {
+      "type": "uid"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "user_email": {
+      "type": "email"
+    },
+    "account_type": {
+      "type": "string"
+    },
+    "profile_location": {
+      "type": "string"
+    },
+    "period_of_use": {
+      "type": "string"
+    },
+    "text_message": {
+      "type": "text"
+    },
+    "total_price": {
+      "type": "string"
+    }
+  }
+}

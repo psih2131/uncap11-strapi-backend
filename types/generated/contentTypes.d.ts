@@ -696,6 +696,42 @@ export interface ApiLeadsAgencyLeadsAgency extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLeadsPayRequestLeadsPayRequest
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'leads_pay_requests';
+  info: {
+    displayName: 'leads-pay-request';
+    pluralName: 'leads-pay-requests';
+    singularName: 'leads-pay-request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    account_type: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::leads-pay-request.leads-pay-request'
+    > &
+      Schema.Attribute.Private;
+    payment_id: Schema.Attribute.UID;
+    period_of_use: Schema.Attribute.String;
+    profile_location: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    quantity: Schema.Attribute.Integer;
+    text_message: Schema.Attribute.Text;
+    total_price: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user_email: Schema.Attribute.Email;
+  };
+}
+
 export interface ApiLeadsPayStatusLeadsPayStatus
   extends Struct.CollectionTypeSchema {
   collectionName: 'leads_pay_statuses';
@@ -1346,6 +1382,7 @@ declare module '@strapi/strapi' {
       'api::get-trial-form.get-trial-form': ApiGetTrialFormGetTrialForm;
       'api::global.global': ApiGlobalGlobal;
       'api::leads-agency.leads-agency': ApiLeadsAgencyLeadsAgency;
+      'api::leads-pay-request.leads-pay-request': ApiLeadsPayRequestLeadsPayRequest;
       'api::leads-pay-status.leads-pay-status': ApiLeadsPayStatusLeadsPayStatus;
       'api::leads-profile-access-allocation.leads-profile-access-allocation': ApiLeadsProfileAccessAllocationLeadsProfileAccessAllocation;
       'api::leads-sing-up.leads-sing-up': ApiLeadsSingUpLeadsSingUp;
